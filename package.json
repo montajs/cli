@@ -7,7 +7,7 @@
   "homepage": "https://www.montajs.com",
   "repository": "montajs/cli",
   "bugs": "https://github.com/montajs/cli/issues",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "bin": {
     "monta": "dist/index.js",
