@@ -26,8 +26,6 @@ async function main() : Promise<void> {
 		outDir: normalise(cliArguments.out ?? cliArguments.outDir ?? './dist'),
 	};
 
-	console.log(config.templateRoot);
-
 	if (!fs.pathExistsSync(config.templateRoot)) {
 		console.error('Root path does not exist: %s', config.templateRoot);
 		process.exit(1);
