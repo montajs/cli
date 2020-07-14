@@ -11,10 +11,10 @@ import { configure } from '@montajs/compiler';
 import { compileAll } from './compileAll';
 import { Config } from './Config';
 
-async function main() {
-	let args = minimist(process.argv.slice(2));
+async function main() : Promise<void> {
+	let cliArguments = minimist(process.argv.slice(2));
 
-	if (args.h || args.help) {
+	if (cliArguments.h || cliArguments.help) {
 		console.log('monta');
 		console.log('  --root    Sets the root directory (default: ./views)');
 		console.log('  --out     Sets the output directory (default: ./dist)');
@@ -23,8 +23,8 @@ async function main() {
 	}
 
 	let config : Config = {
-		templateRoot: normalise(path.resolve(args.root ?? args.templateRoot ?? './views')),
-		outDir: normalise(path.resolve(args.out ?? args.outDir ?? './dist')),
+		templateRoot: normalise(path.resolve(cliArguments.root ?? cliArguments.templateRoot ?? './views')),
+		outDir: normalise(path.resolve(cliArguments.out ?? cliArguments.outDir ?? './dist')),
 	}
 
 	if (!fs.pathExistsSync(config.templateRoot)) {
@@ -41,24 +41,24 @@ async function main() {
 	await compileAll(config);
 
 
-	if (args.watch) {
+	if (cliArguments.watch) {
 		let ready = false;
 		let watcher = chokidar.watch(config.templateRoot + '/**/*', { cwd: process.cwd() });
 		watcher.on('ready', () => ready = true);
-		watcher.on('all', () => {
+		watcher.on('all', async () => {
 			if (ready) {
-				compileAll(config);
+				await compileAll(config);
 			}
 		});
 
 		console.log('Watching ./views, press <enter> to terminate');
 
-		process.stdin.on('data', () => {
-			watcher.close();
+		process.stdin.on('data', async () => {
+			await watcher.close();
 			console.log('Watched stopped');
 			process.exit(0);
 		});
 	}
 }
 
-main();
+void main();
