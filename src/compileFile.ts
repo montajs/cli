@@ -11,7 +11,7 @@ export async function compileFile(file : string, config : Config) : Promise<void
 	let spinner = ora(path.relative(CWD, file)).start();
 
 	let filename = path.basename(file, '.mt') + '.html';
-	let relativeDirectory = path.relative('./views', path.dirname(file));
+	let relativeDirectory = path.relative(config.templateRoot, path.dirname(file));
 
 	try {
 		await fs.ensureDir(path.join(config.outDir, relativeDirectory));

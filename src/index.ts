@@ -4,7 +4,6 @@ import normalise from 'normalize-path';
 import minimist from 'minimist';
 import chokidar from 'chokidar';
 import fs from 'fs-extra';
-import path from 'path';
 
 import { configure } from '@montajs/compiler';
 
@@ -23,9 +22,11 @@ async function main() : Promise<void> {
 	}
 
 	let config : Config = {
-		templateRoot: normalise(path.resolve(cliArguments.root ?? cliArguments.templateRoot ?? './views')),
-		outDir: normalise(path.resolve(cliArguments.out ?? cliArguments.outDir ?? './dist')),
-	}
+		templateRoot: normalise(cliArguments.root ?? cliArguments.templateRoot ?? './views'),
+		outDir: normalise(cliArguments.out ?? cliArguments.outDir ?? './dist'),
+	};
+
+	console.log(config.templateRoot);
 
 	if (!fs.pathExistsSync(config.templateRoot)) {
 		console.error('Root path does not exist: %s', config.templateRoot);
@@ -39,7 +40,6 @@ async function main() : Promise<void> {
 	});
 
 	await compileAll(config);
-
 
 	if (cliArguments.watch) {
 		let ready = false;
