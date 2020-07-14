@@ -16,12 +16,7 @@ export async function compileFile(file : string, config : Config) : Promise<void
 	try {
 		await fs.ensureDir(path.join(config.outDir, relativeDirectory));
 
-		let output = await render(file, {
-			foo: 'bar',
-			name: 'world',
-			message: 'this is a rather long message that we can use to test the built-in truncate function',
-			items: ['a', 'b', false],
-		});
+		let output = await render(file, { });
 
 		await fs.writeFile(path.join(config.outDir, relativeDirectory, filename), output);
 	} catch (error) {
