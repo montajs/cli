@@ -15,19 +15,26 @@ async function main() : Promise<void> {
 
 	if (cliArguments.h || cliArguments.help) {
 		console.log('monta');
-		console.log('  --root    Sets the root directory (default: ./views)');
-		console.log('  --out     Sets the output directory (default: ./dist)');
-		console.log('  --watch   Watches the root directory for changes');
+		console.log('  --root <dir>    Sets the root directory (default: ./views)');
+		console.log('  --out <dir>     Sets the output directory (default: ./dist)');
+		console.log('  --static <dir>  Copy files in this directory to the output directory');
+		console.log('  --watch         Watches the root directory for changes');
 		process.exit(0);
 	}
 
 	let config : Config = {
+		staticFiles: cliArguments.static ? normalise(cliArguments.static) : undefined,
 		templateRoot: normalise(cliArguments.root ?? cliArguments.templateRoot ?? './views'),
 		outDir: normalise(cliArguments.out ?? cliArguments.outDir ?? './dist'),
 	};
 
 	if (!fs.pathExistsSync(config.templateRoot)) {
 		console.error('Root path does not exist: %s', config.templateRoot);
+		process.exit(1);
+	}
+
+	if (config.staticFiles !== undefined && !fs.pathExistsSync(config.staticFiles)) {
+		console.error('Static files path does not exist: %s', config.staticFiles);
 		process.exit(1);
 	}
 

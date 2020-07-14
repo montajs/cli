@@ -1,5 +1,6 @@
 import glob from 'fast-glob';
 import path from 'path';
+import fs from 'fs-extra';
 
 import { compileFile } from './compileFile';
 import { Config } from './Config';
@@ -18,5 +19,9 @@ export async function compileAll(config : Config) : Promise<void> {
 
 	for (let file of paths) {
 		await compileFile(file, config);
+	}
+
+	if (config.staticFiles !== undefined) {
+		await fs.copy(config.staticFiles, config.outDir);
 	}
 }
