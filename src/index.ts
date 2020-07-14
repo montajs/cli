@@ -51,7 +51,8 @@ async function main() : Promise<void> {
 			}
 		});
 
-		console.log('Watching ./views, press <enter> to terminate');
+		console.log('Watching %s', config.templateRoot);
+		console.log('Press <enter> to terminate');
 
 		process.stdin.on('data', async () => {
 			await watcher.close();
