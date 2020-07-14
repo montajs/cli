@@ -9,13 +9,13 @@
   "bugs": "https://github.com/montajs/cli/issues",
   "version": "0.1.1",
   "main": "dist/index.js",
-  "files": [
-    "dist/**/*"
-  ],
   "bin": {
     "monta": "dist/index.js",
     "mt": "dist/index.js"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "rimraf dist/* && tsc",
     "lint": "eslint --ext .ts \"./src/**/*.ts\"",
