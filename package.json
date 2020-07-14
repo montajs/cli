@@ -22,7 +22,7 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@montajs/compiler": "^0.1.0",
+    "@montajs/compiler": "0.1.1",
     "chokidar": "^3.4.0",
     "fast-glob": "^3.2.4",
     "fs-extra": "^9.0.1",
