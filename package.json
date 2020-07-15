@@ -20,7 +20,7 @@
     "build": "rimraf dist/* && tsc",
     "lint": "eslint --ext .ts \"./src/**/*.ts\"",
     "prepublishOnly": "yarn build",
-    "upgrade-monta": "yarn add @montajs/compiler@latest && git add package.json && git add yarn.lock && git commit -m \"Update monta compiler dependency\""
+    "upgrade-monta": "git-is-clean && yarn add @montajs/compiler@latest && git add package.json && git add yarn.lock && git commit -m \"Update monta compiler dependency\""
   },
   "dependencies": {
     "@montajs/compiler": "^0.2.0",
@@ -42,6 +42,7 @@
     "eslint": "^7.4.0",
     "eslint-plugin-prefer-let": "^1.0.2",
     "eslint-plugin-unicorn": "^20.1.0",
+    "git-is-clean": "^3.0.1",
     "rimraf": "^3.0.2",
     "typescript": "^3.9.6"
   },
