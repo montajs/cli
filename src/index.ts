@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node 
 
 import normalise from 'normalize-path';
 import minimist from 'minimist';
