@@ -19,7 +19,8 @@
   "scripts": {
     "build": "rimraf dist/* && tsc",
     "lint": "eslint --ext .ts \"./src/**/*.ts\"",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "upgrade-monta": "yarn add @montajs/compiler@latest && git add package.json && git add yarn.lock && git commit -m \"Update monta compiler dependency\""
   },
   "dependencies": {
     "@montajs/compiler": "^0.1.2",
