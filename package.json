@@ -23,7 +23,7 @@
     "upgrade-monta": "yarn add @montajs/compiler@latest && git add package.json && git add yarn.lock && git commit -m \"Update monta compiler dependency\""
   },
   "dependencies": {
-    "@montajs/compiler": "^0.1.2",
+    "@montajs/compiler": "^0.2.0",
     "chokidar": "^3.4.0",
     "fast-glob": "^3.2.4",
     "fs-extra": "^9.0.1",

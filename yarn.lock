@@ -94,10 +94,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@montajs/compiler@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@montajs/compiler/-/compiler-0.1.2.tgz#9332bde1b52cab5b9c514be3f97b92fa7bb94a38"
-  integrity sha512-48sSs5bb7lDa7BZc/6IvuhLtszqtXQR7Pc3uSG5hmJmKX95wgHqSly3ALteRbk9mq5bCAFApLHJY/Vsgakpk5w==
+"@montajs/compiler@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@montajs/compiler/-/compiler-0.2.0.tgz#a6682a595645e1443bc3005fc6a4b9735942dc23"
+  integrity sha512-1mUT0QJYE129KNB14hR6bZnNsOBsOqQIJi8USHs5Bl4kcZgr9YojKJcm2D2Rke82ENVsAJPHmrEhqnIBUQA2xA==
   dependencies:
     "@woubuc/multimap" "^1.0.1"
     fs-extra "^9.0.1"
